@@ -9,5 +9,5 @@ def home(request):
 def workers(request):
   return render(request, 'workers/index.html')
 
-def aboutUs(request):
-  return render(request, 'views/workers-create.html')
+def workersCreate(request):
+  return render(request, 'workers/workerCreate.html')

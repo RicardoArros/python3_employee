@@ -5,11 +5,17 @@
 {% block content %}
 
 <div class="card">
-  <div class="card-header">Listar Trabajadores</div>
+  <div class="card-header d-flex justify-content-between">
+    <h4 class="card-title">Trabajadores</h4>
+
+    <div>
+      <a name="" id="" class="btn btn-primary" href="{% url 'workerCreate' %}" role="button"
+        >Crear Trabajador
+      </a>
+    </div>
+  </div>
 
   <div class="card-body">
-    <h4 class="card-title">Trabajador</h4>
-
     <table class="table">
       <thead>
         <tr>
