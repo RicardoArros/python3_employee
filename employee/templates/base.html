@@ -25,11 +25,11 @@
 
   <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="#"> Inicio </a>
+      <a class="nav-item nav-link active" href="{% url 'home' %}"> Inicio </a>
 
-      <a class="nav-item nav-link active" href="#"> A </a>
+      <a class="nav-item nav-link active" href="{% url 'workers' %}"> Listar Trabajadores </a>
 
-      <a class="nav-item nav-link active" href="#"> B </a>
+      <a class="nav-item nav-link active" href="{% url 'workers-create' %}"> Crear trabajador </a>
     </div>
   </nav>
 
