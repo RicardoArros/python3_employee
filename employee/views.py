@@ -6,5 +6,8 @@ from django.http import HttpResponse
 def home(request):
   return HttpResponse("<h1>Bienvenido a Colaboradores Yuri</h1>")
 
+def workers(request):
+  return render(request, 'workers/index.html')
+
 def aboutUs(request):
   return render(request, 'views/about-us.html')
