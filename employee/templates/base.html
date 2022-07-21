@@ -23,24 +23,30 @@
     />
   </head>
 
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link active" href="{% url 'home' %}"> Inicio </a>
-
-      <a class="nav-item nav-link active" href="{% url 'workers' %}"> Listar Trabajadores </a>
-
-      <a class="nav-item nav-link active" href="{% url 'workerCreate' %}"> Crear trabajador </a>
-    </div>
-  </nav>
-
   <body>
+    <!-- NAV -->
+    <nav class="navbar navbar-expand navbar-light bg-light">
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'home' %}">Inicio </a>
+
+        <a class="nav-item nav-link active" href="{% url 'workers' %}"
+          >Listar Trabajadores
+        </a>
+
+        <a class="nav-item nav-link active" href="{% url 'workerCreate' %}"
+          >Crear trabajador
+        </a>
+      </div>
+    </nav>
+    <!-- # END NAV -->
+
+    <!-- MAIN -->
     <div class="container">
       <div class="row">
-        <div class="col-12">
-          {% block content %} {% endblock %}
-        </div>
+        <div class="col-12">{% block content %} {% endblock %}</div>
       </div>
     </div>
+    <!-- # MAIN -->
 
     <!-- Bootstrap JavaScript Libraries -->
     <script

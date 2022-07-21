@@ -9,7 +9,12 @@
     <h4 class="card-title">Trabajadores</h4>
 
     <div>
-      <a name="" id="" class="btn btn-primary" href="{% url 'workerCreate' %}" role="button"
+      <a
+        name=""
+        id=""
+        class="btn btn-primary"
+        href="{% url 'workerCreate' %}"
+        role="button"
         >Crear Trabajador
       </a>
     </div>
@@ -33,15 +38,21 @@
           <td>Pedro Torres</td>
           <td>Masculino</td>
           <td>Diseñador</td>
-          <td>Editar | Borrar</td>
-        </tr>
-
-        <tr>
-          <td scope="row">10.000.000-1</td>
-          <td>Pedro Torres</td>
-          <td>Masculino</td>
-          <td>Diseñador</td>
-          <td>Editar | Borrar</td>
+          <td>
+            <a
+              name=""
+              id=""
+              class="btn btn-info"
+              href="{% url 'workerUpdate' %}"
+              role="button"
+            >
+              Editar
+            </a>
+            |
+            <a name="" id="" class="btn btn-danger" href="#" role="button">
+              Borrar
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

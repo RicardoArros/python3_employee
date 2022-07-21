@@ -11,3 +11,6 @@ def workers(request):
 
 def workersCreate(request):
   return render(request, 'workers/workerCreate.html')
+
+def workersUpdate(request):
+  return render(request, 'workers/workerUpdate.html')

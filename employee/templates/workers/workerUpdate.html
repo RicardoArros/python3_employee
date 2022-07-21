@@ -5,6 +5,22 @@
 
 {% block content %}
 
-Formulario para editar Trabajador
+<div class="card">
+  <div class="card-header">
+    Editar trabajador
+  </div>
+
+  <div class="card-body">
+    <h4 class="card-title">Datos del trabajador</h4>
+
+    <!--  -->
+    {% include 'workers/workerForm.html' %}
+   
+  </div>
+
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
 
 {% endblock %}
