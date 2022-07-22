@@ -10,7 +10,7 @@ class Employee(models.Model):
   employee_address = models.CharField(max_length=60, verbose_name="Dirección", null=True)
   employee_phone = models.CharField(max_length=30, verbose_name="Teléfono", null=True)
   employee_gender	= models.CharField(max_length=30, verbose_name="Género", null=True)
-  employee_companyDate = models.DateField()
+  employee_companyDate = models.DateField(verbose_name="Fecha de ingreso")
 
   perfil_id = models.ForeignKey("Profile", verbose_name="Perfil", on_delete=models.CASCADE)
   area_id = models.ForeignKey("Area", verbose_name="Area", on_delete=models.CASCADE)

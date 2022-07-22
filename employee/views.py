@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
 from .models import Employee
+
+from .forms import EmployeeForm
+
 
 # Create your views here.
 
@@ -17,7 +21,14 @@ def workers(request):
 
 
 def workersCreate(request):
-  return render(request, 'workers/workerCreate.html')
+  form = EmployeeForm(request.POST or None, request.FILES or None)
+
+  if form.is_valid():
+    form.save()
+    return redirect('workers')
+
+
+  return render(request, 'workers/workerCreate.html', {'form': form})
 
 
 def workersUpdate(request):
