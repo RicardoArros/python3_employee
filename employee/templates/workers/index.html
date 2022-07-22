@@ -33,11 +33,14 @@
       </thead>
 
       <tbody>
+
+        {% for employee in employees %}
+
         <tr>
-          <td scope="row">10.000.000-1</td>
-          <td>Pedro Torres</td>
-          <td>Masculino</td>
-          <td>Diseñador</td>
+          <td scope="row">{{employee.employee_rut}}</td>
+          <td>{{employee.employee_name}}{{employee.employee_lastname}}</td>
+          <td>{{employee.employee_gender}}</td>
+          <td></td>
           <td>
             <a
               name=""
@@ -54,6 +57,9 @@
             </a>
           </td>
         </tr>
+
+        {% endfor %}
+
       </tbody>
     </table>
   </div>
