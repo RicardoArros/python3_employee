@@ -33,14 +33,13 @@
       </thead>
 
       <tbody>
-
         {% for employee in employees %}
 
         <tr>
           <td scope="row">{{employee.employee_rut}}</td>
-          <td>{{employee.employee_name}}{{employee.employee_lastname}}</td>
+          <td>{{employee.employee_firstname}} {{employee.employee_lastname}}</td>
           <td>{{employee.employee_gender}}</td>
-          <td></td>
+          <td>{{employee.position_id}}</td>
           <td>
             <a
               name=""
@@ -52,7 +51,7 @@
               Editar
             </a>
             |
-            <a name="" id="" class="btn btn-danger" href="#" role="button">
+            <a name="" id="" class="btn btn-danger" href="{% url 'workerDelete' employee.employee_rut %}" role="button">
               Borrar
             </a>
           </td>

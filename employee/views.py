@@ -8,10 +8,11 @@ from .forms import EmployeeForm
 
 # Create your views here.
 
+# Home
 def home(request):
   return render(request, 'views/home.html')
 
-
+# 
 def workers(request):
   employees = Employee.objects.all()
 
@@ -19,17 +20,22 @@ def workers(request):
 
   return render(request, 'workers/index.html', {'employees': employees})
 
-
+#
 def workersCreate(request):
   form = EmployeeForm(request.POST or None, request.FILES or None)
 
   if form.is_valid():
-    form.save()
-    return redirect('workers')
-
+    form.save()  
+    return redirect('workers')  
 
   return render(request, 'workers/workerCreate.html', {'form': form})
 
-
+#
 def workersUpdate(request):
   return render(request, 'workers/workerUpdate.html')
+
+#
+def workersDelete(request, rut):
+  employee = Employee.objects.get(employee_rut=rut)
+  employee.delete()
+  return redirect('workers')

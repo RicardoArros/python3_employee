@@ -4,8 +4,6 @@ from .models import *
 
 # Register your models here.
 
-# admin.site.register()
-
 # all other models
 models = apps.get_models()
 

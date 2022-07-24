@@ -1,26 +1,11 @@
-<form enctype="multipart/form-data" action="" method="post">
-  {% csrf_token %} {% for input in form %}
+{% load crispy_forms_tags %}
 
-  <!-- INPUT ITEM-->
-  <div class="mb-3">
-    <label for="" class="form-label">{{input.label}}: </label>
 
-    <input
-      type="{{input.field.widget.input_type}}"
-      class="form-control"
-      name="{{input.name}}"
-      id=""
-      aria-describedby="helpId"
-      placeholder="{{input.label}}"
-    />
 
-    <small id="helpId" class="form-text text-muted help-text">
-      {{input.errors}}
-    </small>
-  </div>
-  <!-- # INPUT ITEM -->
-
-  {% endfor %} 
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
   
-  <input name="" id="" class="btn btn-success" type="submit" value="Crear Trabajador">
+  {{ form | crispy }}  
+  
+  <button name="" id="" class="btn btn-success mt-5" type="submit">Crear Trabajador</button>
 </form>

@@ -3,14 +3,21 @@ from django.db import models
 # Create your models here.
 
 class Employee(models.Model):
-  #id = models.AutoField(primary_key=True)
+
+  #
+  select_gender = (
+    ('M', "Masculino"),
+    ('F', "Femenino")
+  )
+  
   employee_rut = models.CharField(max_length=50, verbose_name="Rut", primary_key=True)
   employee_firstname = models.CharField(max_length=50, verbose_name="Nombres", null=True)
   employee_lastname = models.CharField(max_length=50, verbose_name="Apellidos", null=True)
   employee_address = models.CharField(max_length=60, verbose_name="Dirección", null=True)
   employee_phone = models.CharField(max_length=30, verbose_name="Teléfono", null=True)
-  employee_gender	= models.CharField(max_length=30, verbose_name="Género", null=True)
-  employee_companyDate = models.DateField(verbose_name="Fecha de ingreso")
+  employee_gender	= models.CharField(max_length=1, verbose_name="Género", null=True, choices=select_gender, default='')
+  employee_companyDate = models.DateField(auto_now_add=False, auto_now=False , blank=True, verbose_name="Fecha de ingreso (dd/mm/yyyy)", null=True)
+  timestamp = models.DateField(auto_now_add=True, auto_now=False , blank=True, verbose_name="")
 
   perfil_id = models.ForeignKey("Profile", verbose_name="Perfil", on_delete=models.CASCADE)
   area_id = models.ForeignKey("Area", verbose_name="Area", on_delete=models.CASCADE)
@@ -18,7 +25,7 @@ class Employee(models.Model):
   position_id = models.ForeignKey("Position", verbose_name="Cargo", on_delete=models.CASCADE)
 
   def __str__(self):
-    row = "Rut: " + self.employee_rut + " - " + "Nombres: " + self.employee_firstname + " - " + "Apellidos: " + self.employee_lastname + " - " + "Dirección: " + self.employee_address + " - " + "Teléfono: " + self.employee_phone + " - " + "Género: " + self.employee_gender + " - " + "Fecha ingreso: "
+    row = "Rut: " + self.employee_rut + " - " + "Nombres: " + self.employee_firstname + " - " + "Apellidos: " + self.employee_lastname + " - " + "Dirección: " + self.employee_address + " - " + "Teléfono: " + self.employee_phone + " - " +  "Fecha ingreso: "
     return row
 
 
