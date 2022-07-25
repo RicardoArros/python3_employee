@@ -31,8 +31,15 @@ def workersCreate(request):
   return render(request, 'workers/workerCreate.html', {'form': form})
 
 #
-def workersUpdate(request):
-  return render(request, 'workers/workerUpdate.html')
+def workersUpdate(request, rut):
+  employee = Employee.objects.get(employee_rut=rut)
+  form = EmployeeForm(request.POST or None, request.FILES or None, instance=employee)
+
+  if form.is_valid() and request.POST:
+    form.save()
+    return redirect('workers')
+
+  return render(request, 'workers/workerUpdate.html', {'form': form})
 
 #
 def workersDelete(request, rut):
