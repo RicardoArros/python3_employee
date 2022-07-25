@@ -1,0 +1,12 @@
+body {
+  background-color: rgb(210, 210, 241);
+}
+
+.nav {
+  gap: 1rem;
+}
+
+.logo {
+  width: 90px;  
+  
+}
