@@ -24,8 +24,8 @@ class Employee(models.Model):
   position_id = models.ForeignKey("Position", verbose_name="Cargo", on_delete=models.CASCADE)
 
   def __str__(self):
-    row = "Rut: " + self.employee_rut + " - " + "Nombres: " + self.employee_firstname + " - " + "Apellidos: " + self.employee_lastname + " - " + "Dirección: " + self.employee_address + " - " + "Teléfono: " + self.employee_phone + " - " +  "Fecha ingreso: "
-    return row
+    #row = "Rut: " + self.employee_rut + " - " + "Nombres: " + self.employee_firstname + " - " + "Apellidos: " + self.employee_lastname + " - " + "Dirección: " + self.employee_address + " - " + "Teléfono: " + self.employee_phone + " - " +  "Fecha ingreso: "
+    return self.employee_firstname
 
 
 class Profile(models.Model):
