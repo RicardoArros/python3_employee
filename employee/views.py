@@ -21,7 +21,7 @@ def workers(request):
   page = request.GET.get('page', 1)
 
   try:
-    paginator = Paginator(employees, 4)
+    paginator = Paginator(employees, 2)
     employees = paginator.page(page)
   except:
     raise Http404

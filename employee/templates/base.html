@@ -34,22 +34,49 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="nav navbar-nav d-flex align-items-center">
-              <img src="{% static 'employee/img/logo.png' %}" class="logo" />
+            <div class="nav navbar-nav d-flex align-items-center justify-content-between">
+              <ul class="d-flex">
+                <li>
+                  <img
+                    src="{% static 'employee/img/logo.png' %}"
+                    class="logo"
+                  />
+                </li>
 
-              <a class="nav-item nav-link active" href="{% url 'home' %}"
-                >Inicio
-              </a>
+                <li>
+                  <a class="nav-item nav-link active" href="{% url 'home' %}"
+                    >Inicio
+                  </a>
+                </li>
 
-              <a class="nav-item nav-link active" href="{% url 'workers' %}"
-                >Listar Trabajadores
-              </a>
+                <li>
+                  <a class="nav-item nav-link active" href="{% url 'workers' %}"
+                    >Listar Trabajadores
+                  </a>
+                </li>
 
-              <a
-                class="nav-item nav-link active"
-                href="{% url 'workerCreate' %}"
-                >Crear trabajador
-              </a>
+                <li>
+                  <a
+                    class="nav-item nav-link active"
+                    href="{% url 'workerCreate' %}"
+                    >Crear trabajador
+                  </a>
+                </li>
+              </ul>
+
+              {% if user.is_authenticated %}
+              <ul class="d-flex">
+                <li>{{ user.username }}</li>
+                <li>
+                  <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </li>
+
+                {% else %}
+                <li>
+                  <a href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+              </ul>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -82,16 +109,14 @@
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {% if messages %} 
-      {% for m in messages%} 
-        <script>
-          Swal.fire({
-            "title": 'Felicitaciones',
-            "text": "{{ m }} ",
-            "icon": "success"
-          })
-        </script>
-      {% endfor %} 
-    {% endif %}
+    {% if messages %} {% for m in messages%}
+    <script>
+      Swal.fire({
+        title: "Felicitaciones",
+        text: "{{ m }} ",
+        icon: "success",
+      });
+    </script>
+    {% endfor %} {% endif %}
   </body>
 </html>

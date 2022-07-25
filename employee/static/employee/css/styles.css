@@ -2,6 +2,13 @@ body {
   background-color: rgb(210, 210, 241);
 }
 
+ul, li {
+  list-style: none;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
 .nav {
   gap: 1rem;
 }

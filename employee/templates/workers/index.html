@@ -63,7 +63,7 @@
               class="btn btn-danger"
               href="{% url 'workerDelete' employee.employee_rut %}"
               role="button"
-              {% comment %} onclick="workersDeleteFunction({{employee.employee_rut}})" {% endcomment %}
+              
             >
               Borrar
             </a>
@@ -73,11 +73,11 @@
         {% endfor %}
       </tbody>
     </table>
-
-    <div>{% include 'views/paginator.html' %}</div>
   </div>
 
-  <div class="card-footer text-muted">Footer</div>
+  <div class="card-footer text-muted d-flex justify-content-end">
+    {% include 'views/paginator.html' %}
+  </div>
 </div>
 
 {% endblock %}
