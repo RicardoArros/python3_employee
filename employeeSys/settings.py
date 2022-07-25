@@ -31,6 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 
 # Application definition
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'employee.apps.EmployeeConfig',
     'crispy_forms',
     'colorfield',
+    'django.contrib.humanize',
 ]
 
 

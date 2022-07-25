@@ -1,12 +1,25 @@
 {% load crispy_forms_tags %}
 
-
-
 <form enctype="multipart/form-data" method="post">
-  {% csrf_token %}
+  {% csrf_token %} 
   
   {{ form | crispy }}  
-  
-  <button name="" id="" class="btn btn-success mt-5" type="submit">Crear Trabajador</button>
-  <a name="" id="" class="btn btn-primary mt-5" href="{% url 'workers' %}" role="button">Cancelar</a>
+
+  <div class="mt-5">
+    <button name="" id="" class="btn btn-success" type="submit">
+      Enviar Información
+    </button>
+
+    <a
+      name=""
+      id=""
+      class="btn btn-primary"
+      href="{% url 'workers' %}"
+      role="button"
+    >
+      Cancelar
+    </a>
+  </div>
 </form>
+
+{{ message }}
