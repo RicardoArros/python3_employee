@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    {% comment %} {% load crispy_forms_tags %} {% endcomment %}
+    {% load crispy_forms_tags %}
 
     <div class="login__wrap">
       <div>
@@ -34,7 +34,7 @@
         <form action="" method="post">
           {% csrf_token %} 
           
-          {{ form }}
+          {{ form | crispy}}
 
           <input type="submit" class="" value="ingresar" />
         </form>

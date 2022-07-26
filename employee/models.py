@@ -69,12 +69,12 @@ class Position(models.Model):
 
 class ContactEmergency(models.Model):  
   contact_id = models.AutoField(primary_key=True)
-  contact_relation = models.CharField(max_length=50, verbose_name="Relación Parentesca", null=True)
-  contact_phone = models.CharField(max_length=30, verbose_name="Teléfono", null=True)
-  contact_firstname = models.CharField(max_length=50, verbose_name="Nombres", null=True)
-  contact_lastname = models.CharField(max_length=50, verbose_name="Apellidos", null=True)
+  contact_relation = models.CharField(max_length=50, verbose_name="Relación Parentesca Contacto de emergencia", null=True)
+  contact_phone = models.CharField(max_length=30, verbose_name="Teléfono Contacto de emergencia", null=True)
+  contact_firstname = models.CharField(max_length=50, verbose_name="Nombres Contacto de emergencia", null=True)
+  contact_lastname = models.CharField(max_length=50, verbose_name="Apellidos Contacto de emergencia", null=True)
 
-  employee_rut = models.ForeignKey("Employee", verbose_name=("Rut trabajador"), null=True, on_delete=models.CASCADE)
+  employee_rut = models.ForeignKey("Employee", verbose_name=(""), null=True, on_delete=models.CASCADE)
 
   def __str__(self):
     row = "Parentesco: " + self.contact_relation + " - " + "Nombres: " + self.contact_firstname + " - " + "Apellidos: " + self.contact_lastname + " - " + "Teléfono: " + self.contact_phone

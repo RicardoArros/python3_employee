@@ -3,7 +3,13 @@
 <form enctype="multipart/form-data" method="post">
   {% csrf_token %} 
   
+  <div class="my-4">1.- Datos Personales y Datos Laborales</div>
   {{ form | crispy }}  
+
+  <div class="my-4">2.- Contacto de Emergencia</div>
+  {{ form2 | crispy }}  
+
+  <div class="my-4">3.- Carga familiar</div>
 
   <div class="mt-5">
     <button name="" id="" class="btn btn-success" type="submit">

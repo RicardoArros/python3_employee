@@ -20,7 +20,7 @@ def home(request):
 def terms(request):
   return render(request, 'views/terms.html')
 
-# 
+# List workers
 def workers(request):
   employees = Employee.objects.all()
   page = request.GET.get('page', 1)
@@ -40,7 +40,7 @@ def workers(request):
 
   return render(request, 'workers/index.html', employeesData)
 
-#
+# Create workers
 def workersCreate(request):
   form = EmployeeForm(request.POST or None, request.FILES or None)
   form2 = ContactEmergencyForm(request.POST or None, request.FILES or None)
@@ -50,8 +50,9 @@ def workersCreate(request):
     'form2': form2
   }
 
-  if form.is_valid():
+  if form.is_valid() and form2.is_valid():
     form.save()  
+    form2.save()
     messages.success(request, "Trabajador creado correctamente")
     
     return redirect('workers')
@@ -62,13 +63,16 @@ def workersCreate(request):
 def workersUpdate(request, rut):
   employee = Employee.objects.get(employee_rut=rut)
   form = EmployeeForm(request.POST or None, request.FILES or None, instance=employee)
+  form2 = ContactEmergencyForm(request.POST or None, request.FILES or None, instance=employee)
 
   formData = {
-    'form': form
+    'form': form,
+    'form2': form2
   }
 
-  if form.is_valid() and request.POST:
+  if form.is_valid() and form2.is_valid() and request.POST:
     form.save()
+    form2.save()
     messages.success(request, "Trabajador editado correctamente")    
 
     return redirect('workers')
