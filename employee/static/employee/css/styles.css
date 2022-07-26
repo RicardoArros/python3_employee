@@ -9,6 +9,9 @@ ul, li {
   margin: 0;
 }
 
+
+/* NAV */
+
 .nav {
   gap: 1rem;
 }
@@ -16,4 +19,11 @@ ul, li {
 .logo {
   width: 90px;  
   
+}
+
+
+/* LOGIN */
+
+.login__wrap {
+  min-height: 100vh;
 }

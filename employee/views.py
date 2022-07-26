@@ -15,6 +15,10 @@ from .forms import EmployeeForm
 def home(request):
   return render(request, 'views/home.html')
 
+# Terms
+def terms(request):
+  return render(request, 'views/terms.html')
+
 # 
 def workers(request):
   employees = Employee.objects.all()
