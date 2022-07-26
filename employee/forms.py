@@ -1,5 +1,6 @@
 from django import forms
 from .models import Employee
+from .models import ContactEmergency
 
 
 class EmployeeForm(forms.ModelForm):
@@ -7,7 +8,8 @@ class EmployeeForm(forms.ModelForm):
     model = Employee
     # fields = '__all__'  
     fields = ['employee_rut', 'employee_firstname', 'employee_lastname', 'employee_address', 
-    'employee_phone', 'employee_gender', 'employee_companyDate', 'perfil_id', 'area_id', 'dep_id', 'position_id']
+    'employee_phone', 'employee_gender', 'employee_companyDate', 'perfil_id', 'area_id', 
+    'dep_id', 'position_id', 'contact_id', 'liability_id']
     widgets = {
       'employee_companyDate': forms.DateInput(attrs={'type': 'date'})
     }
@@ -46,3 +48,10 @@ class EmployeeForm(forms.ModelForm):
     })
 
     # employee_companyDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+
+
+
+class ContactEmergencyForm(forms.ModelForm):
+  class Meta:
+    model = ContactEmergency
+    fields = '__all__'  

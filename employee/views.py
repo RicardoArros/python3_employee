@@ -7,6 +7,7 @@ from django.http import Http404
 from .models import Employee
 
 from .forms import EmployeeForm
+from .forms import ContactEmergencyForm
 
 
 # Create your views here.
@@ -42,9 +43,11 @@ def workers(request):
 #
 def workersCreate(request):
   form = EmployeeForm(request.POST or None, request.FILES or None)
+  form2 = ContactEmergencyForm(request.POST or None, request.FILES or None)
 
   formData = {
-    'form': form
+    'form': form,
+    'form2': form2
   }
 
   if form.is_valid():

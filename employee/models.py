@@ -23,6 +23,9 @@ class Employee(models.Model):
   dep_id = models.ForeignKey("Department", verbose_name="Departamento", on_delete=models.CASCADE)
   position_id = models.ForeignKey("Position", verbose_name="Cargo", on_delete=models.CASCADE)
 
+  contact_id = models.ForeignKey("ContactEmergency", verbose_name="Contacto de emergencia", null=True, on_delete=models.CASCADE)
+  liability_id = models.ForeignKey("Liability", verbose_name="Carga", null=True, on_delete=models.CASCADE)
+
   def __str__(self):
     #row = "Rut: " + self.employee_rut + " - " + "Nombres: " + self.employee_firstname + " - " + "Apellidos: " + self.employee_lastname + " - " + "Dirección: " + self.employee_address + " - " + "Teléfono: " + self.employee_phone + " - " +  "Fecha ingreso: "
     return self.employee_firstname
@@ -79,11 +82,18 @@ class ContactEmergency(models.Model):
 
 
 class Liability(models.Model):  
+
+   #
+  select_gender = (
+    ('M', "Masculino"),
+    ('F', "Femenino")
+  )
+
   liability_id = models.AutoField(primary_key=True)
   liability_rut = models.CharField(max_length=50, verbose_name="Rut Carga", null=True)
   liability_firstname = models.CharField(max_length=60, verbose_name="Nombre Carga", null=True)
   liability_lastname = models.CharField(max_length=50, verbose_name="Apellido Carga", null=True)  
-  liability_gender = models.CharField(max_length=30, verbose_name="Género Carga", null=True)
+  liability_gender = models.CharField(max_length=1, verbose_name="Género Carga", null=True, choices=select_gender, default='')
   liability_kin = models.CharField(max_length=50, verbose_name="Parentesco Carga", null=True)
 
   employee_rut = models.ForeignKey("Employee", verbose_name=("Rut trabajador"), null=True, on_delete=models.CASCADE)
