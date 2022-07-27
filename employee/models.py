@@ -15,7 +15,7 @@ class Employee(models.Model):
   employee_address = models.CharField(max_length=60, verbose_name="Dirección", null=True)
   employee_phone = models.CharField(max_length=30, verbose_name="Teléfono", null=True)
   employee_gender	= models.CharField(max_length=1, verbose_name="Género", null=True, choices=select_gender, default='')
-  employee_companyDate = models.DateField(auto_now_add=False, auto_now=False , blank=True, verbose_name="Fecha de ingreso (dd/mm/yyyy)", null=True)
+  employee_companyDate = models.DateField(auto_now_add=False, auto_now=False , blank=False, verbose_name="Fecha de ingreso (dd/mm/yyyy)", null=True)
   timestamp = models.DateField(auto_now_add=True, auto_now=False , blank=True, verbose_name="")
 
   perfil_id = models.ForeignKey("Profile", verbose_name="Perfil", on_delete=models.CASCADE)
@@ -90,11 +90,11 @@ class Liability(models.Model):
   )
 
   liability_id = models.AutoField(primary_key=True)
-  liability_rut = models.CharField(max_length=50, verbose_name="Rut Carga", null=True)
-  liability_firstname = models.CharField(max_length=60, verbose_name="Nombre Carga", null=True)
-  liability_lastname = models.CharField(max_length=50, verbose_name="Apellido Carga", null=True)  
-  liability_gender = models.CharField(max_length=1, verbose_name="Género Carga", null=True, choices=select_gender, default='')
-  liability_kin = models.CharField(max_length=50, verbose_name="Parentesco Carga", null=True)
+  liability_rut = models.CharField(max_length=50, verbose_name="Rut Carga", null=True, blank=True,)
+  liability_firstname = models.CharField(max_length=60, verbose_name="Nombre Carga", null=True, blank=True) 
+  liability_lastname = models.CharField(max_length=50, verbose_name="Apellido Carga", null=True, blank=True)  
+  liability_gender = models.CharField(max_length=1, verbose_name="Género Carga", null=True, choices=select_gender, default='', blank=True)
+  liability_kin = models.CharField(max_length=50, verbose_name="Parentesco Carga", null=True, blank=True)
 
   employee_rut = models.ForeignKey("Employee", verbose_name=("Rut trabajador"), null=True, on_delete=models.CASCADE)
 

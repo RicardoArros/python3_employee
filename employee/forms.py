@@ -1,6 +1,7 @@
 from django import forms
 from .models import Employee
 from .models import ContactEmergency
+from .models import Liability
 
 
 class EmployeeForm(forms.ModelForm):
@@ -55,6 +56,21 @@ class ContactEmergencyForm(forms.ModelForm):
     #fields = '__all__'
     fields = ['contact_relation', 'contact_firstname', 'contact_lastname',
     'contact_phone']
+
+    def __init__(self, *args, **kwargs):
+      # initialize form, which will create self.fields dict
+      super(ContactEmergencyForm, self).__init__(*args, **kwargs)
+          
+      # self.fields['contact_relation'].widget.attrs.update({
+      #   'class': 'mb-4',
+      # })
+
+class LiabilityForm(forms.ModelForm):
+  class Meta:
+    model = Liability
+    #fields = '__all__'
+    fields = ['liability_kin', 'liability_firstname', 'liability_lastname',
+    'liability_rut', 'liability_gender']
 
     def __init__(self, *args, **kwargs):
       # initialize form, which will create self.fields dict

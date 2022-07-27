@@ -8,6 +8,7 @@ from .models import Employee
 
 from .forms import EmployeeForm
 from .forms import ContactEmergencyForm
+from .forms import LiabilityForm
 
 
 # Create your views here.
@@ -26,7 +27,7 @@ def workers(request):
   page = request.GET.get('page', 1)
 
   try:
-    paginator = Paginator(employees, 2)
+    paginator = Paginator(employees, 5)
     employees = paginator.page(page)
   except:
     raise Http404
@@ -44,15 +45,18 @@ def workers(request):
 def workersCreate(request):
   form = EmployeeForm(request.POST or None, request.FILES or None)
   form2 = ContactEmergencyForm(request.POST or None, request.FILES or None)
+  form3 = LiabilityForm(request.POST or None, request.FILES or None)
 
   formData = {
     'form': form,
-    'form2': form2
+    'form2': form2,
+    'form3': form3,
   }
 
-  if form.is_valid() and form2.is_valid():
+  if form.is_valid() and form2.is_valid() and form3.is_valid():
     form.save()  
     form2.save()
+    form3.save()
     messages.success(request, "Trabajador creado correctamente")
     
     return redirect('workers')
@@ -63,16 +67,16 @@ def workersCreate(request):
 def workersUpdate(request, rut):
   employee = Employee.objects.get(employee_rut=rut)
   form = EmployeeForm(request.POST or None, request.FILES or None, instance=employee)
-  form2 = ContactEmergencyForm(request.POST or None, request.FILES or None, instance=employee)
+  #form2 = ContactEmergencyForm(request.POST or None, request.FILES or None, instance=employee)
 
   formData = {
     'form': form,
-    'form2': form2
+    # 'form2': form2
   }
 
-  if form.is_valid() and form2.is_valid() and request.POST:
+  if form.is_valid() and request.POST:
     form.save()
-    form2.save()
+    # form2.save()
     messages.success(request, "Trabajador editado correctamente")    
 
     return redirect('workers')
